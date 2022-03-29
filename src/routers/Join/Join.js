@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import './Join.css';
 import React from 'react'
+// import Wave from 'react-wavify'
 import WaveEffect from '../../components/Wave';
+
 import Splash from "../../IMG/Splash/Splash.png"
 
 function Join() {
@@ -14,7 +16,7 @@ function Join() {
     const [loading, setLoading] = useState('none');
 
     useEffect(() => {
-        setTimeout(() => { setLoading('block') }, 3000)
+        setTimeout(() => { setLoading('block') }, 1500)
     }, [])
     if (loading === 'block') {
         console.log(loading)
@@ -27,18 +29,17 @@ function Join() {
             [e.target.id]: e.target.value,
         })
     }
-    // const Splash = () => {
-    //     return(
-    //     <div id="Splash">
-    //         <img src={Splash} className='flasg' />
-    //     </div>)
-    // }
-
-    return (
-        <>
+    const SplashBg = () => {
+        return (
             <div id="Splash">
                 <img src={Splash} className='flasg' />
             </div>
+        )
+    }
+
+    return (
+        <>
+            {loading === 'none' ? <SplashBg /> : null}
             <div id="JoinBox" style={{ display: `${loading}` }}>
                 <h1 id="Logo">Login</h1>
                 <form id="JoinBoxForm">
@@ -58,6 +59,7 @@ function Join() {
                     </div>
                 </form>
             </div>
+            {loading === 'none' ? null : <WaveEffect />}
         </>
     )
 }
