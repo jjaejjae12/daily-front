@@ -1,4 +1,4 @@
-import Joo from'./AppCss.js';
+import Joo from'./HomeCss.js';
 import React from 'react'
 import BackGroundImgAutumn from "../../IMG/MAIN-BK/autumn.png"
 import BackGroundImgSpring from "../../IMG/MAIN-BK/spring.png"
