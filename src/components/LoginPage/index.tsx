@@ -1,7 +1,16 @@
 import Link from "next/link";
+import { useState } from "react";
 import * as S from "./style";
 
 export default function LoginPage() {
+  const [loginInput, setLoginInput] = useState({ id: "", password: "" });
+  const { id, password } = loginInput;
+
+  const onChangeInput = (e: any) => {
+    const { name, value } = e.target;
+    setLoginInput((prev) => ({ ...prev, [name]: value }));
+  };
+
   return (
     <S.Wrapper>
       <S.Layer>
@@ -9,11 +18,23 @@ export default function LoginPage() {
         <S.InputForm>
           <S.InputLayer>
             <S.InputName>E-mail</S.InputName>
-            <input type="email" placeholder="이메일을 입력하세요" />
+            <input
+              type="email"
+              placeholder="이메일을 입력하세요"
+              value={id}
+              name="id"
+              onChange={onChangeInput}
+            />
           </S.InputLayer>
           <S.InputLayer>
             <S.InputName>Password</S.InputName>
-            <input type="password" placeholder="이메일을 입력하세요" />
+            <input
+              type="password"
+              placeholder="이메일을 입력하세요"
+              value={password}
+              name="password"
+              onChange={onChangeInput}
+            />
           </S.InputLayer>
           <Link href="/">Forgot Password?</Link>
           <button value="Login">Login</button>
